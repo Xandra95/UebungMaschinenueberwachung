@@ -24,12 +24,18 @@ namespace UebungMaschinenueberwachung
                 Console.WriteLine(erstes);
             }
 
-            TemperaturAngaben();
+            StartEingabe();
 
             int temperatur = 1;
             int statisik = 2;
             int grenzwert = 3;
             int beenden = 0;
+
+            static void StartEingabe()
+            {
+                Console.ReadLine();
+            }
+
         }
         
             
