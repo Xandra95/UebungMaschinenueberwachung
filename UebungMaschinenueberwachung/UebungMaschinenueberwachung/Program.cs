@@ -11,7 +11,7 @@ namespace UebungMaschinenueberwachung
 
             static void ZeigeStartseite()
             {
-                List<string> ZeigeStartseite = new List<string>
+                List<string> start = new List<string>
                 {
                     "1 - Temperatur erfassen",
                     "2 - Statisik erfassen",
@@ -20,38 +20,49 @@ namespace UebungMaschinenueberwachung
                 };
 
 
-                foreach (var erstes in ZeigeStartseite)
+                foreach (var starts in start)
                 {
-                    Console.WriteLine(erstes);
+                    Console.WriteLine(starts);
+                }            
+
+                int zahl = Convert.ToInt32(Console.ReadLine());
+
+                StartEingabe(zahl);
+
+            }
+
+            List<int> temperaturen = new List<int>();
+
+
+            while(true)
+            {
+                Console.Write("Bitte weitere Temperauren angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
+                string eingabe = Console.ReadLine();
+
+                if (eingabe == "s")
+                {
+                    break;
                 }
-
-                int temperatur = 1;
-                int statistik = 2;
-                int grenzwert = 3;
-                int beenden = 0;
-
-                int eingegebeneZahl = Convert.ToInt32(Console.ReadLine());
-
-                StartEingabe(eingegebeneZahl);
-
+                int temperatur = Convert.ToInt32(eingabe);
+                temperaturen.Add(temperatur);
             }
 
         }
 
-        static void StartEingabe(int eingegebeneZahl)
+        static void StartEingabe(int zahl)
         {
 
-            if (eingegebeneZahl == 1)
+            if (zahl == 1)
             {
                 Console.WriteLine("Bitte Temperaturwerte eingeben");
                 int erfassung = Convert.ToInt32(Console.ReadLine());
 
             }
-            else if (eingegebeneZahl == 2)
+            else if (zahl == 2)
             {
                 Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten ");
             }
-            else if (eingegebeneZahl == 3)
+            else if (zahl == 3)
             {
                 Console.WriteLine("Grenzwerte wurden geprüft: ");
             }
