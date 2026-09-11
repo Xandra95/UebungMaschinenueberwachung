@@ -25,7 +25,9 @@ namespace UebungMaschinenueberwachung
                     Console.WriteLine(starts);
                 }            
 
+
                 int zahl = Convert.ToInt32(Console.ReadLine());
+
 
                 StartEingabe(zahl);
 
@@ -52,11 +54,9 @@ namespace UebungMaschinenueberwachung
         static void StartEingabe(int zahl)
         {
 
-            if (zahl == 1)
+            if (zahl == 0)
             {
-                Console.WriteLine("Bitte Temperaturwerte eingeben");
-                int erfassung = Convert.ToInt32(Console.ReadLine());
-
+                Environment.Exit(0);
             }
             else if (zahl == 2)
             {
@@ -66,8 +66,10 @@ namespace UebungMaschinenueberwachung
             {
                 Console.WriteLine("Grenzwerte wurden geprüft: ");
             }
-            else
+            else if (zahl == 1)
             {
+                Console.WriteLine("Bitte Temperaturwerte eingeben");
+                int erfassung = Convert.ToInt32(Console.ReadLine());
 
             }
         }
