@@ -9,9 +9,18 @@ namespace UebungMaschinenueberwachung
         {
             ZeigeStartseite();
 
-            static void ZeigeStartseite()
-            {
-                List<string> start = new List<string>
+
+            int zahl = Convert.ToInt32(Console.ReadLine());
+
+
+            StartEingabe(zahl);
+
+        }
+
+
+        static void ZeigeStartseite()
+        {
+            List<string> start = new List<string>
                 {
                     "1 - Temperatur erfassen",
                     "2 - Statisik erfassen",
@@ -19,24 +28,19 @@ namespace UebungMaschinenueberwachung
                     "0 - Programm beenden"
                 };
 
-
-                foreach (var starts in start)
-                {
-                    Console.WriteLine(starts);
-                }            
-
-
-                int zahl = Convert.ToInt32(Console.ReadLine());
-
-
-                StartEingabe(zahl);
-
+            foreach (var starts in start)
+            {
+                Console.WriteLine(starts);
             }
+        }
+
+            static void StartEingabe(int zahl)
+            {
 
             List<int> temperaturen = new List<int>();
 
 
-            while(true)
+            while (true)
             {
                 Console.Write("Bitte weitere Temperauren angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
                 string eingabe = Console.ReadLine();
@@ -48,11 +52,6 @@ namespace UebungMaschinenueberwachung
                 int temperatur = Convert.ToInt32(eingabe);
                 temperaturen.Add(temperatur);
             }
-
-        }
-
-        static void StartEingabe(int zahl)
-        {
 
             if (zahl == 0)
             {
@@ -72,8 +71,8 @@ namespace UebungMaschinenueberwachung
                 int erfassung = Convert.ToInt32(Console.ReadLine());
 
             }
-        }
-
+            }
+            
 
         
     }
