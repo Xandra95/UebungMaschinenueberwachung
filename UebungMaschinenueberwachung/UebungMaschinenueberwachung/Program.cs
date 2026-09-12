@@ -10,6 +10,8 @@ namespace UebungMaschinenueberwachung
         {
             List<int> temperaturen = new List<int>();
 
+            int anzahlWarnungen = 0;
+
             while (true)
             {
                 ZeigeStartseite();
@@ -18,7 +20,7 @@ namespace UebungMaschinenueberwachung
                 int zahl = Convert.ToInt32(Console.ReadLine());
 
 
-                TemperaturErfassen(zahl, temperaturen);
+                TemperaturErfassen(zahl, temperaturen, ref anzahlWarnungen);
 
             }
 
@@ -44,7 +46,7 @@ namespace UebungMaschinenueberwachung
 
 
 
-        static void TemperaturErfassen(int zahl, List<int> temperaturen)
+        static void TemperaturErfassen(int zahl, List<int> temperaturen, ref int anzahlWarnungen)
         {
 
             if (zahl == 1)
@@ -52,7 +54,7 @@ namespace UebungMaschinenueberwachung
 
                 while (true)
                 {
-                    Console.Write("Bitte weitere Temperauren angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
+                    Console.Write("Bitte Temperatur angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
                     string eingabe = Console.ReadLine();
 
                     if (eingabe == "s")
@@ -70,6 +72,11 @@ namespace UebungMaschinenueberwachung
                     {
                         temperaturen.Add(temperatur);
 
+                        if (temperatur > 80)
+                        {
+                            anzahlWarnungen++;
+                        }
+
                         if (temperatur > 90)
                         {
                             Console.WriteLine(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----");
@@ -86,6 +93,7 @@ namespace UebungMaschinenueberwachung
             else if (zahl == 3)
             {
                 GrenzwertePruefung(temperaturen);
+                Console.WriteLine("Anzahl Warnungen: " + anzahlWarnungen);
             }
             else if (zahl == 0)
             {
