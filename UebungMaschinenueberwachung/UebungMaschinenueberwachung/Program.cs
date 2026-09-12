@@ -69,7 +69,13 @@ namespace UebungMaschinenueberwachung
                     else
                     {
                         temperaturen.Add(temperatur);
+
+                        if (temperatur > 90)
+                        {
+                            Console.WriteLine(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----");
+                        }
                     }
+                    
                 }
 
             }     
