@@ -7,6 +7,8 @@ namespace UebungMaschinenueberwachung
     {
         static void Main(string[] args)
         {
+            List<int> temperaturen = new List<int>();
+
             while (true)
             {
                 ZeigeStartseite();
@@ -15,10 +17,9 @@ namespace UebungMaschinenueberwachung
                 int zahl = Convert.ToInt32(Console.ReadLine());
 
 
-                StartEingabe(zahl);
+                StartEingabe(zahl, temperaturen);
 
             }
-
 
         }
 
@@ -39,10 +40,8 @@ namespace UebungMaschinenueberwachung
             }
         }
 
-            static void StartEingabe(int zahl)
-            {
-
-            List<int> temperaturen = new List<int>();
+        static void StartEingabe(int zahl, List<int> temperaturen)
+        {
 
             if (zahl == 1)
             {
@@ -61,21 +60,32 @@ namespace UebungMaschinenueberwachung
                 }
             }
 
-            if (zahl == 0) 
+            if (zahl == 0)
             {
                 Environment.Exit(0);
             }
             else if (zahl == 2)
             {
-                Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten ");
+                // ÄNDERN !
             }
             else if (zahl == 3)
             {
                 Console.WriteLine("Grenzwerte wurden geprüft: ");
             }
+
+        }
             
-            }
-            
+        static void StatistikAnzeigen(List<int> temperaturen)
+        {
+            double durchschnitt = temperaturen.Average();
+            int minimum = temperaturen.Min();
+            int maximum = temperaturen.Max();
+
+            Console.WriteLine("Hier ist ihre Statistik zu den Temperaturwerten: ");
+            Console.WriteLine("Durchschnitt: " + durchschnitt);
+            Console.WriteLine("Minimum: " + minimum);
+            Console.WriteLine("Maximum: " + maximum);
+        }
 
         
     }
