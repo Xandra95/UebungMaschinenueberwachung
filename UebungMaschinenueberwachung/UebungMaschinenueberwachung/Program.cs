@@ -7,13 +7,18 @@ namespace UebungMaschinenueberwachung
     {
         static void Main(string[] args)
         {
-            ZeigeStartseite();
+            while (true)
+            {
+                ZeigeStartseite();
 
 
-            int zahl = Convert.ToInt32(Console.ReadLine());
+                int zahl = Convert.ToInt32(Console.ReadLine());
 
 
-            StartEingabe(zahl);
+                StartEingabe(zahl);
+
+            }
+
 
         }
 
@@ -39,21 +44,24 @@ namespace UebungMaschinenueberwachung
 
             List<int> temperaturen = new List<int>();
 
-
-            while (true)
+            if (zahl == 1)
             {
-                Console.Write("Bitte weitere Temperauren angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
-                string eingabe = Console.ReadLine();
 
-                if (eingabe == "s")
+                while (true)
                 {
-                    break;
+                    Console.Write("Bitte weitere Temperauren angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
+                    string eingabe = Console.ReadLine();
+
+                    if (eingabe == "s")
+                    {
+                        break;
+                    }
+                    int temperatur = Convert.ToInt32(eingabe);
+                    temperaturen.Add(temperatur);
                 }
-                int temperatur = Convert.ToInt32(eingabe);
-                temperaturen.Add(temperatur);
             }
 
-            if (zahl == 0)
+            if (zahl == 0) 
             {
                 Environment.Exit(0);
             }
@@ -65,12 +73,7 @@ namespace UebungMaschinenueberwachung
             {
                 Console.WriteLine("Grenzwerte wurden geprüft: ");
             }
-            else if (zahl == 1)
-            {
-                Console.WriteLine("Bitte Temperaturwerte eingeben");
-                int erfassung = Convert.ToInt32(Console.ReadLine());
-
-            }
+            
             }
             
 
