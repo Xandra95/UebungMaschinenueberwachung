@@ -59,9 +59,19 @@ namespace UebungMaschinenueberwachung
                     {
                         break;
                     }
+
                     int temperatur = Convert.ToInt32(eingabe);
-                    temperaturen.Add(temperatur);
+
+                    if (temperatur > 120 || temperatur < 0)
+                    {
+                        Console.WriteLine("Fehler: Ungültige Eingabe.");
+                    }
+                    else
+                    {
+                        temperaturen.Add(temperatur);
+                    }
                 }
+
             }     
             if (zahl == 2)
             {
