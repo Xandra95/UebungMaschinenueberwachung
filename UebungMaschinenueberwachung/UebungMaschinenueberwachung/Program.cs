@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel.Design;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace UebungMaschinenueberwachung
@@ -17,7 +18,7 @@ namespace UebungMaschinenueberwachung
                 int zahl = Convert.ToInt32(Console.ReadLine());
 
 
-                StartEingabe(zahl, temperaturen);
+                TemperaturErfassen(zahl, temperaturen);
 
             }
 
@@ -40,7 +41,10 @@ namespace UebungMaschinenueberwachung
             }
         }
 
-        static void StartEingabe(int zahl, List<int> temperaturen)
+
+
+
+        static void TemperaturErfassen(int zahl, List<int> temperaturen)
         {
 
             if (zahl == 1)
@@ -65,7 +69,7 @@ namespace UebungMaschinenueberwachung
             }
             else if (zahl == 3)
             {
-                Console.WriteLine("Grenzwerte wurden geprüft: ");
+                GrenzwertePruefung(temperaturen);
             }
             else if (zahl == 0)
             {
@@ -74,16 +78,42 @@ namespace UebungMaschinenueberwachung
 
         }
             
+
+
         static void StatistikAnzeigen(List<int> temperaturen)
         {
             double durchschnitt = temperaturen.Average();
             int minimum = temperaturen.Min();
             int maximum = temperaturen.Max();
 
-            Console.WriteLine("Hier ist ihre Statistik zu den Temperaturwerten: ");
+            Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten: ");
             Console.WriteLine("Durchschnitt: " + durchschnitt);
             Console.WriteLine("Minimum: " + minimum);
             Console.WriteLine("Maximum: " + maximum);
+        }
+
+
+        
+
+        static void GrenzwertePruefung(List<int>temperaturen)  
+        {
+            foreach(var temperatur in temperaturen)
+            {
+                if (temperatur < 50)
+                {
+                    Console.WriteLine(temperatur + " Grad Celsius --> Kühl");
+                }
+                else if (temperatur < 80)
+                {
+                    Console.WriteLine(temperatur + " Grad Celsius --> Normal");
+                }
+                else
+                {
+                    Console.WriteLine(temperatur + " Grad Celsius --> WARNUNG!");
+                }
+                   
+
+            }
         }
 
         
