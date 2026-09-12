@@ -58,19 +58,18 @@ namespace UebungMaschinenueberwachung
                     int temperatur = Convert.ToInt32(eingabe);
                     temperaturen.Add(temperatur);
                 }
-            }
-
-            if (zahl == 0)
+            }     
+            if (zahl == 2)
             {
-                Environment.Exit(0);
-            }
-            else if (zahl == 2)
-            {
-                // ÄNDERN !
+                StatistikAnzeigen(temperaturen);
             }
             else if (zahl == 3)
             {
                 Console.WriteLine("Grenzwerte wurden geprüft: ");
+            }
+            else if (zahl == 0)
+            {
+                Environment.Exit(0);
             }
 
         }
