@@ -10,6 +10,15 @@ namespace UebungMaschinenueberwachung
         {
             List<int> temperaturen = new List<int>();
 
+            if(System.IO.File.Exists("Temperaturen.txt"))
+            {
+                var dateiTemperatur = System.IO.File.ReadAllLines("Temperaturen.txt");
+                foreach (var line in dateiTemperatur)
+                {
+                    temperaturen.Add(int.Parse(line));
+                }
+            }
+
             int anzahlWarnungen = 0;
 
             while (true)
@@ -34,6 +43,7 @@ namespace UebungMaschinenueberwachung
                     "1 - Temperatur erfassen",
                     "2 - Statisik erfassen",
                     "3 - Grenzwerte prüfen",
+                    "4 - Temperaturen speichern",
                     "0 - Programm beenden"
                 };
 
@@ -95,6 +105,10 @@ namespace UebungMaschinenueberwachung
                 GrenzwertePruefung(temperaturen);
                 Console.WriteLine("Anzahl Warnungen: " + anzahlWarnungen);
             }
+            else if (zahl == 4)
+            {
+                TemperaturenSpeichern(temperaturen);
+            }
             else if (zahl == 0)
             {
                 Environment.Exit(0);
@@ -109,11 +123,13 @@ namespace UebungMaschinenueberwachung
             double durchschnitt = temperaturen.Average();
             int minimum = temperaturen.Min();
             int maximum = temperaturen.Max();
+           
+            
 
             Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten: ");
-            Console.WriteLine("Durchschnitt: " + durchschnitt);
-            Console.WriteLine("Minimum: " + minimum);
-            Console.WriteLine("Maximum: " + maximum);
+            Console.WriteLine($"Durchschnitt:  {durchschnitt}");
+            Console.WriteLine($"Minimum:  {minimum}");
+            Console.WriteLine($"Maximum: {maximum}");
         }
 
 
@@ -138,6 +154,11 @@ namespace UebungMaschinenueberwachung
                    
 
             }
+        }
+
+        private static void TemperaturenSpeichern(List<int> temperaturen)
+        {
+            System.IO.File.WriteAllLines("Temperaturen.txt", temperaturen.Select(x => x.ToString()));
         }
 
         
