@@ -7,8 +7,20 @@ namespace UebungMaschinenueberwachung
     internal class Program
     {
         static void Main(string[] args)
-        {
+        { 
+            StartseitenEingabe Hauptmenü = new StartseitenEingabe();
+
+            AnsichtStartseite DasErsteWasNutzerSieht = new AnsichtStartseite();
+
+            TemperaturKonsolenEingabe TemperaturenMaschine = new TemperaturKonsolenEingabe();
             List<int> temperaturen = new List<int>();
+
+            Grenzwert GrenzwertAusgabe = new Grenzwert();
+
+            Statistik StatistikAnzeigen = new Statistik();
+
+            TemperaturSichern NixMerken = new TemperaturSichern();
+
 
             if(System.IO.File.Exists("Temperaturen.txt"))
             {
@@ -23,151 +35,17 @@ namespace UebungMaschinenueberwachung
 
             while (true)
             {
-                ZeigeStartseite();
+                DasErsteWasNutzerSieht.ZeigeStartseite();
 
 
-                int zahl = Convert.ToInt32(Console.ReadLine());
+                int zahl = int.Parse(Console.ReadLine());
 
 
-                TemperaturErfassen(zahl, temperaturen, ref anzahlWarnungen);
+                Hauptmenü.Auswertung(zahl, temperaturen, ref anzahlWarnungen, TemperaturenMaschine, StatistikAnzeigen, GrenzwertAusgabe, NixMerken);
 
             }
 
         }
 
-
-        static void ZeigeStartseite()
-        {
-            List<string> start = new List<string>
-                {
-                    "1 - Temperatur erfassen",
-                    "2 - Statisik erfassen",
-                    "3 - Grenzwerte prüfen",
-                    "4 - Temperaturen speichern",
-                    "0 - Programm beenden"
-                };
-
-            foreach (var starts in start)
-            {
-                Console.WriteLine(starts);
-            }
-        }
-
-
-
-
-        static void TemperaturErfassen(int zahl, List<int> temperaturen, ref int anzahlWarnungen)
-        {
-
-            if (zahl == 1)
-            {
-
-                while (true)
-                {
-                    Console.Write("Bitte Temperatur angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
-                    string eingabe = Console.ReadLine();
-
-                    if (eingabe == "s")
-                    {
-                        break;
-                    }
-
-                    int temperatur = Convert.ToInt32(eingabe);
-
-                    if (temperatur > 120 || temperatur < 0)
-                    {
-                        Console.WriteLine("Fehler: Ungültige Eingabe.");
-                    }
-                    else
-                    {
-                        temperaturen.Add(temperatur);
-
-                        if (temperatur > 80)
-                        {
-                            anzahlWarnungen++;
-                        }
-
-                        if (temperatur > 90)
-                        {
-                            Console.WriteLine(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----");
-                        }
-                    }
-                    
-                }
-
-            }     
-            if (zahl == 2)
-            {
-                StatistikAnzeigen(temperaturen);
-            }
-            else if (zahl == 3)
-            {
-                GrenzwertePruefung(temperaturen);
-                Console.WriteLine("Anzahl Warnungen: " + anzahlWarnungen);
-            }
-            else if (zahl == 4)
-            {
-                TemperaturenSpeichern(temperaturen);
-            }
-            else if (zahl == 0)
-            {
-                Environment.Exit(0);
-            }
-
-        }
-            
-
-
-        static void StatistikAnzeigen(List<int> temperaturen)
-        {
-            double durchschnitt = temperaturen.Average();
-            int minimum = temperaturen.Min();
-            int maximum = temperaturen.Max();
-           
-            
-
-            Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten: ");
-            Console.WriteLine($"Durchschnitt:  {durchschnitt}");
-            Console.WriteLine($"Minimum:  {minimum}");
-            Console.WriteLine($"Maximum: {maximum}");
-        }
-
-
-        
-
-        static void GrenzwertePruefung(List<int>temperaturen)  
-        {
-            foreach(var temperatur in temperaturen)
-            {
-                if (temperatur < 50)
-                {
-                    Console.WriteLine(temperatur + " Grad Celsius --> Kühl");
-                }
-                else if (temperatur < 80)
-                {
-                    Console.WriteLine(temperatur + " Grad Celsius --> Normal");
-                }
-                else
-                {
-                    Console.WriteLine(temperatur + " Grad Celsius --> WARNUNG!");
-                }
-                   
-
-            }
-        }
-
-        private static void TemperaturenSpeichern(List<int> temperaturen)
-        {
-            System.IO.File.WriteAllLines("Temperaturen.txt", temperaturen.Select(x => x.ToString()));
-        }
-
-        
     }
 }
-       
-        
-            
-
-
-        
-    
