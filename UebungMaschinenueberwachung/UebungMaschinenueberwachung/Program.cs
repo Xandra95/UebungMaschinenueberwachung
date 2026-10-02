@@ -12,17 +12,18 @@ namespace UebungMaschinenueberwachung
 
             StartseiteAuswertung MaschinenHauptmenüAuswertung = new StartseiteAuswertung();
 
-            Zahlenwert TemperaturZahlen = new Zahlenwert();
+            TemperaturwertUser MaschinenTemperatur = new TemperaturwertUser();
             List<int> temperaturen = new List<int>();
 
-            Grenzwert MaschinenGrenzwert = new Grenzwert();
+            Grenzwert MaschinenGrenzwert = new Grenzwert(); //Mit Statistik in eine Klasse
 
             Statistik MaschinenStatistik = new Statistik();
 
             DatenSpeicherung TemperaturSpeichern = new DatenSpeicherung();
 
+            // User Klasse Erstellen
 
-            if(System.IO.File.Exists("Temperaturen.txt"))
+            if(System.IO.File.Exists("Temperaturen.txt")) //Das in die Klasse DatenSpeicherung
             {
                 var dateiTemperatur = System.IO.File.ReadAllLines("Temperaturen.txt");
                 foreach (var line in dateiTemperatur)
@@ -41,7 +42,7 @@ namespace UebungMaschinenueberwachung
                 int zahl = int.Parse(Console.ReadLine());
 
 
-                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, TemperaturZahlen, MaschinenStatistik, MaschinenGrenzwert, TemperaturSpeichern);
+                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, MaschinenTemperatur, MaschinenStatistik, MaschinenGrenzwert, TemperaturSpeichern);
 
             }
 

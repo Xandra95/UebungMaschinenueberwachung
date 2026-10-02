@@ -1,4 +1,4 @@
-﻿public class Zahlenwert
+﻿public class TemperaturwertUser //Console.WriteLine weg oder alle User Kommunikationen in eine Klasse
 {
 
     public void WriteLineFarbig(string text, ConsoleColor textFarbe, ConsoleColor hintergrundFarbe)
@@ -10,7 +10,7 @@
         Console.ResetColor();
     }
 
-    public void Temperaturen(List<int>temperaturen, ref int anzahlWarnungen)
+    public void Temperaturen(List<int>temperaturen, ref int anzahlWarnungen) //Kein Void
     {
         while (true)
         {

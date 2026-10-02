@@ -1,4 +1,4 @@
-﻿public class Statistik
+﻿public class Statistik   // Kein ConsoleWriteLine / Kein Void. Außerdem mit Grenzwert in eine Klasse
 {
     public void StatistikBerechnung(List<int> temperaturen)
     {

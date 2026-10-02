@@ -1,4 +1,4 @@
-﻿public class  Startseite
+﻿public class  Startseite  //Eventuell zusammen in eine Klasse mit StartseiteAuswertung
 {
     public void MaschinenStartseiteMethode()
     {

@@ -1,4 +1,4 @@
-﻿public class Grenzwert
+﻿public class Grenzwert // Kein Console.WriteLIne. Mit Statistik in eine Klasse
 {
     public void GrenzwertePruefung(List<int> temperaturen)
     {

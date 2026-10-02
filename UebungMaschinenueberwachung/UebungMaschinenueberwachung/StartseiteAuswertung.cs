@@ -1,6 +1,6 @@
 ﻿public class StartseiteAuswertung
 {
-    public void Auswertung(int zahl, List<int>temperaturen, ref int anzahlWarnungen, Zahlenwert TemperaturenMaschine,Statistik StatistikAnzeigen, Grenzwert Grenzwertausgabe, DatenSpeicherung NixMerken )
+    public void Auswertung(int zahl, List<int>temperaturen, ref int anzahlWarnungen, TemperaturwertUser TemperaturenMaschine,Statistik StatistikAnzeigen, Grenzwert Grenzwertausgabe, DatenSpeicherung NixMerken )
     {
         
 
