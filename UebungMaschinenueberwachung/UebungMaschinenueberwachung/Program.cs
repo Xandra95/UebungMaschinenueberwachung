@@ -7,19 +7,19 @@ namespace UebungMaschinenueberwachung
     internal class Program
     {
         static void Main(string[] args)
-        { 
-            StartseitenEingabe Hauptmenü = new StartseitenEingabe();
+        {
+            Startseite MaschinenüberwachungHauptmenü = new Startseite();
 
-            AnsichtStartseite DasErsteWasNutzerSieht = new AnsichtStartseite();
+            StartseiteAuswertung MaschinenHauptmenüAuswertung = new StartseiteAuswertung();
 
-            TemperaturKonsolenEingabe TemperaturenMaschine = new TemperaturKonsolenEingabe();
+            Zahlenwert TemperaturZahlen = new Zahlenwert();
             List<int> temperaturen = new List<int>();
 
-            Grenzwert GrenzwertAusgabe = new Grenzwert();
+            Grenzwert MaschinenGrenzwert = new Grenzwert();
 
-            Statistik StatistikAnzeigen = new Statistik();
+            Statistik MaschinenStatistik = new Statistik();
 
-            TemperaturSichern NixMerken = new TemperaturSichern();
+            DatenSpeicherung TemperaturSpeichern = new DatenSpeicherung();
 
 
             if(System.IO.File.Exists("Temperaturen.txt"))
@@ -35,13 +35,13 @@ namespace UebungMaschinenueberwachung
 
             while (true)
             {
-                DasErsteWasNutzerSieht.ZeigeStartseite();
+                MaschinenüberwachungHauptmenü.MaschinenStartseiteMethode();
 
 
                 int zahl = int.Parse(Console.ReadLine());
 
 
-                Hauptmenü.Auswertung(zahl, temperaturen, ref anzahlWarnungen, TemperaturenMaschine, StatistikAnzeigen, GrenzwertAusgabe, NixMerken);
+                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, TemperaturZahlen, MaschinenStatistik, MaschinenGrenzwert, TemperaturSpeichern);
 
             }
 

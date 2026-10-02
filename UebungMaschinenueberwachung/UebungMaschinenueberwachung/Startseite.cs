@@ -1,6 +1,6 @@
-﻿public class  AnsichtStartseite
+﻿public class  Startseite
 {
-    public void ZeigeStartseite()
+    public void MaschinenStartseiteMethode()
     {
         List<string> start = new List<string>
                 {

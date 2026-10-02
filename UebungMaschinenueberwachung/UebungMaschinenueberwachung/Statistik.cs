@@ -1,6 +1,6 @@
 ﻿public class Statistik
 {
-    public void StatistikAnzeigen(List<int> temperaturen)
+    public void StatistikBerechnung(List<int> temperaturen)
     {
         double durchschnitt = temperaturen.Average();
         int minimum = temperaturen.Min();

@@ -1,4 +1,4 @@
-﻿public class TemperaturSichern
+﻿public class DatenSpeicherung
 {
     public void TemperaturenSpeichern(List<int> temperaturen)
     {

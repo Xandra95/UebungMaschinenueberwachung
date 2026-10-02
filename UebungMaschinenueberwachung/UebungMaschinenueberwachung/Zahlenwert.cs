@@ -1,4 +1,4 @@
-﻿public class TemperaturKonsolenEingabe
+﻿public class Zahlenwert
 {
 
     public void WriteLineFarbig(string text, ConsoleColor textFarbe, ConsoleColor hintergrundFarbe)
@@ -14,7 +14,7 @@
     {
         while (true)
         {
-            Console.Write("Bitte Temperatur angeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
+            Console.Write("Bitte Temperaturwert eingeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
             string eingabe = Console.ReadLine();
 
             if (eingabe == "s")
@@ -39,7 +39,7 @@
 
                 if (temperatur > 90)
                 {
-                    WriteLineFarbig(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----",ConsoleColor.Red, ConsoleColor.Gray);
+                    WriteLineFarbig(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----",ConsoleColor.White, ConsoleColor.DarkRed);
                 }
             }
 
