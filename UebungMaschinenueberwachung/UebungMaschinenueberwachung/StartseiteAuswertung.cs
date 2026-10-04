@@ -1,6 +1,6 @@
 ﻿public class StartseiteAuswertung
 {
-    public void Auswertung(int zahl, List<int>temperaturen, ref int anzahlWarnungen, TemperaturwertUser TemperaturenMaschine,UserAusgabe StatistikUserAusgabe, UserAusgabe GrenzwertUserAusgabe, DatenSpeicherung TemperaturenSpeichern )
+    public void Auswertung(int zahl, List<int>temperaturen, ref int anzahlWarnungen, TemperaturwertUser TemperaturenMaschine,TemperaturAuswertung MaschinenAuswertung, DatenSpeicherung TemperaturenSpeichern )
     {
         
 
@@ -10,11 +10,11 @@
         }
         else if (zahl == 2)
         {
-            StatistikUserAusgabe.StatistikAusgabe(temperaturen);
+            MaschinenAuswertung.StatistikBerechnung(temperaturen);
         }
         else if (zahl == 3)
         {
-            GrenzwertUserAusgabe.GrenzwertPruefung(temperaturen, );
+            MaschinenAuswertung.GrenzwertePruefung(temperaturen);
         }
         else if (zahl == 4) 
         {

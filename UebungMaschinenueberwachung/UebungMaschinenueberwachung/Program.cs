@@ -41,7 +41,7 @@ namespace UebungMaschinenueberwachung
                 int zahl = int.Parse(Console.ReadLine());
 
 
-                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, MaschinenTemperatur,  Sta,?????,TemperaturSpeichern);
+                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, MaschinenTemperatur,  MaschinenAuswertung,TemperaturSpeichern);
 
             }
 
