@@ -11,7 +11,7 @@
 
     public void StatistikUserAusgabe (double durchschnitt, int minimum, int maximum)
     {
-        Console.WriteLine("Hier ist Ihre Statistik zu den Temperaturwerten: ");
+        WriteLineFarbig("Hier ist Ihre Statistik zu den Temperaturwerten: ",ConsoleColor.Blue,ConsoleColor.Black);
         Console.WriteLine();
         Console.WriteLine($"Durchschnitt:  {durchschnitt}");
         Console.WriteLine($"Minimum:  {minimum}");
@@ -21,33 +21,33 @@
 
     public void GrenzwertUserAusgabe(int temperatur, string grenzstatus)
     {
-        Console.WriteLine();
         Console.WriteLine($"{temperatur} Grad Celsius ---->  {grenzstatus}");
+        Console.WriteLine("-------------------------------------");
     }
 
     public void UserAusgabeTempErfassen()
     {
-        Console.WriteLine();
-        WriteLineFarbig("Bitte Temperaturwert eingeben oder Drücken Sie s um zurück zur Startseite zu gelangen.", ConsoleColor.Black, ConsoleColor.White);
+        WriteLineFarbig("Bitte Temperaturwert eingeben oder Drücken Sie s um zurück zur Startseite zu gelangen.", ConsoleColor.DarkCyan, ConsoleColor.Black);
+        Console.WriteLine("-----------------------------------------------------------------------------------");
     }
 
     public void UngültigeEingabeUser()
     {
-        Console.WriteLine();
+        
         WriteLineFarbig("Fehler: Ungültige Eingabe.", ConsoleColor.Yellow, ConsoleColor.DarkGray);
+        Console.WriteLine("-----------------------------------------------------------------------------------");
     }
     
     public void KritischUserInteraktion(int temperatur)
     {
-        Console.WriteLine();
-        WriteLineFarbig(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----", ConsoleColor.White, ConsoleColor.DarkRed);
         
+        WriteLineFarbig(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----", ConsoleColor.White, ConsoleColor.DarkRed);
+        Console.WriteLine("------------------------------------------------------------------------------------");
     }
 
     internal void WarnungAusgabe(int anzahlWarnungen)
     {
-        Console.WriteLine();
         WriteLineFarbig($"Es wurden {anzahlWarnungen} Warnungen festgestellt", ConsoleColor.DarkRed, ConsoleColor.White);
-        Console.WriteLine();
+        Console.WriteLine("------------------------------------------------------------------------------------");
     }
 }

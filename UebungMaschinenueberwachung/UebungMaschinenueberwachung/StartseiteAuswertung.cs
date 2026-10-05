@@ -6,36 +6,42 @@ public class StartseiteAuswertung
     {
         UserAusgabe userAusgabe = new UserAusgabe();
 
-        if (zahl == 1)  // Hier eine switch Verzweigung, Enum
+        switch (zahl)  // Hier eine switch Verzweigung, Enum
         {
-            int anzahlWarnungen = TemperaturenMaschine.Temperaturen(temperaturen);
-            userAusgabe.WarnungAusgabe(anzahlWarnungen);
-        }
-        else if (zahl == 2)
-        {
-            int min = MaschinenAuswertung.GetMin(temperaturen);
-            int max = MaschinenAuswertung.GetMax(temperaturen);
-            double durchschnitt = MaschinenAuswertung.GetDurchschnitt(temperaturen);
+            case 1:
+                {
+                    int anzahlWarnungen = TemperaturenMaschine.Temperaturen(temperaturen);
+                    userAusgabe.WarnungAusgabe(anzahlWarnungen);
+                    break;
+                }
 
-            userAusgabe.StatistikUserAusgabe(durchschnitt, min, max);
-        }
-        else if (zahl == 3)
-        {
-            List<TemperaturInfo> info = MaschinenAuswertung.GrenzwertePruefung(temperaturen);
-            foreach (var temperatur in info)
-            {
-                userAusgabe.GrenzwertUserAusgabe(temperatur.Temperatur, temperatur.Kategorie);
-            }
-        }
+            case 2:
+                {
+                    int min = MaschinenAuswertung.GetMin(temperaturen);
+                    int max = MaschinenAuswertung.GetMax(temperaturen);
+                    double durchschnitt = MaschinenAuswertung.GetDurchschnitt(temperaturen);
 
-        else if (zahl == 4)
-        {
+                    userAusgabe.StatistikUserAusgabe(durchschnitt, min, max);
+                    break;
+                }
 
-            TemperaturenSpeichern.TemperaturenSpeichern(temperaturen);
-        }
-        else
-        {
-            Environment.Exit(0);
+            case 3:
+                {
+                    List<TemperaturInfo> info = MaschinenAuswertung.GrenzwertePruefung(temperaturen);
+                    foreach (var temperatur in info)
+                    {
+                        userAusgabe.GrenzwertUserAusgabe(temperatur.Temperatur, temperatur.Kategorie);
+                    }
+
+                    break;
+                }
+
+            case 4:
+                TemperaturenSpeichern.TemperaturenSpeichern(temperaturen);
+                break;
+            default:
+                Environment.Exit(0);
+                break;
         }
 
     }
