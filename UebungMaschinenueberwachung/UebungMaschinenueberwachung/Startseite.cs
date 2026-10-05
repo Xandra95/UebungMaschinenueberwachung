@@ -1,7 +1,11 @@
-﻿public class  Startseite  //Eventuell zusammen in eine Klasse mit StartseiteAuswertung
+﻿public class  Startseite  
 {
     public void MaschinenStartseiteMethode()
     {
+        
+        UserAusgabe UserAusgabeStartseite = new();
+        
+
         List<string> start = new List<string>
                 {
                     "---MASCHINENÜBERWACHUNG---",
@@ -16,7 +20,8 @@
 
         foreach (var starts in start)
         {
-            Console.WriteLine(starts);
+            UserAusgabeStartseite.WriteLineFarbig(starts,ConsoleColor.Cyan,ConsoleColor.Black);
+            
         }
     }
 }

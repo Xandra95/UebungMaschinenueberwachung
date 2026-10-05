@@ -8,8 +8,8 @@ public class TemperaturAuswertung
         int minimum = temperaturen.Min();
         int maximum = temperaturen.Max();
 
-        UserAusgabe StatistikMaschineUser = new UserAusgabe();
-        StatistikMaschineUser.StatistikUserAusgabe(durchschnitt, minimum, maximum);
+        UserAusgabe UserAusgabeStatistik = new UserAusgabe();
+        UserAusgabeStatistik.StatistikUserAusgabe(durchschnitt, minimum, maximum);
     }
 
     public int GetMin(List<TemperaturInfo> temperaturen)
