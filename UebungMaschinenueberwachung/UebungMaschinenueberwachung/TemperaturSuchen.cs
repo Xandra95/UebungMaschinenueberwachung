@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace UebungMaschinenueberwachung
@@ -8,9 +9,9 @@ namespace UebungMaschinenueberwachung
     {
         public void TemperaturSuchfunktion(List<TemperaturInfo> temperaturInfos)
         {
+
             int temperaturSuchen;
             bool sucheBeenden = false;
-
 
             do
             {
@@ -23,7 +24,7 @@ namespace UebungMaschinenueberwachung
                 else
                 {
                     var TemperaturSuchen = temperaturInfos.Where(temp => temp.Temperatur == temperaturSuchen).ToList();
-                    Console.WriteLine($" Deine Temperatur ist {TemperaturSuchen.Count}mal eingetragen worden.");
+                    
                 }
 
             } while (sucheBeenden);

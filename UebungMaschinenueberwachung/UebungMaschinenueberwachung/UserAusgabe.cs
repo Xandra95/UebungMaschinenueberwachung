@@ -1,4 +1,6 @@
-﻿public class UserAusgabe
+﻿using UebungMaschinenueberwachung;
+
+public class UserAusgabe
 {
     public void WriteLineFarbig(string text, ConsoleColor textFarbe, ConsoleColor hintergrundFarbe)
     {
@@ -27,7 +29,7 @@
 
     public void UserAusgabeTempErfassen()
     {
-        WriteLineFarbig("Bitte Temperaturwert eingeben oder Drücken Sie s um zurück zur Startseite zu gelangen.", ConsoleColor.DarkCyan, ConsoleColor.Black);
+        WriteLineFarbig("Bitte Temperaturwert eingeben oder Drücken Sie -- S -- um zurück zur Startseite zu gelangen.", ConsoleColor.DarkCyan, ConsoleColor.Black);
         Console.WriteLine("-----------------------------------------------------------------------------------");
     }
 
@@ -45,9 +47,15 @@
         Console.WriteLine("------------------------------------------------------------------------------------");
     }
 
-    internal void WarnungAusgabe(int anzahlWarnungen)
+    public void WarnungAusgabe(int anzahlWarnungen)
     {
-        WriteLineFarbig($"Es wurden {anzahlWarnungen} Warnungen festgestellt", ConsoleColor.DarkRed, ConsoleColor.White);
+        WriteLineFarbig($"Es wurden {anzahlWarnungen} Warnungen festgestellt", ConsoleColor.DarkRed, ConsoleColor.DarkGray);
+        Console.WriteLine("------------------------------------------------------------------------------------");
+    }
+
+    public void SuchfunktionUserAusgabe (int Count) // Ausgabe ist immer 20mal -> muss noch gefixt werden
+    {
+        WriteLineFarbig($" Deine Temperatur ist {Count}mal eingetragen worden.",ConsoleColor.Blue,ConsoleColor.Black);
         Console.WriteLine("------------------------------------------------------------------------------------");
     }
 }

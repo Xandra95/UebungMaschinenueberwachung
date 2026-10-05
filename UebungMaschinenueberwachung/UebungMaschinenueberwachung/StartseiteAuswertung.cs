@@ -42,6 +42,7 @@ public class StartseiteAuswertung
 
             case 5:
                 temperaturSuchen.TemperaturSuchfunktion(temperaturen);
+                userAusgabe.SuchfunktionUserAusgabe(temperaturen.Count);
                 break;
 
             default:

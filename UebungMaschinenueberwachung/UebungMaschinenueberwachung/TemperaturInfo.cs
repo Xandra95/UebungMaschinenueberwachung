@@ -8,6 +8,6 @@ namespace UebungMaschinenueberwachung
     {
         public int Temperatur { get; set; }
         public string Kategorie { get; set; }
-
+       
     }
 }
