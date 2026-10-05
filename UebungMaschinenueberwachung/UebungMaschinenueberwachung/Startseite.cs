@@ -14,6 +14,7 @@
                     "2 - Statisik erfassen",
                     "3 - Grenzwerte prüfen",
                     "4 - Temperaturen speichern",
+                    "5 - Temperatur suchen",
                     "0 - Programm beenden",
                     ""
                 };

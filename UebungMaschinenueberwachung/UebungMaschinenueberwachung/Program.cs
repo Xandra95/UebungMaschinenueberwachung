@@ -19,6 +19,8 @@ namespace UebungMaschinenueberwachung
 
             DatenSpeicherung DatenSpeicherung = new DatenSpeicherung();
 
+            TemperaturSuchen TemperaturSuchen = new();
+
             
            
 
@@ -43,7 +45,7 @@ namespace UebungMaschinenueberwachung
                 int zahl = int.Parse(Console.ReadLine());
 
 
-                StartseiteAuswertung.Auswertung(zahl, temperaturen,  TemperaturwertUser,  TemperaturAuswertung,DatenSpeicherung);
+                global::StartseiteAuswertung.Auswertung(zahl, temperaturen,  TemperaturwertUser,  TemperaturAuswertung,DatenSpeicherung,TemperaturSuchen);
 
             }
 

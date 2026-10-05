@@ -2,11 +2,11 @@
 
 public class StartseiteAuswertung
 {
-    public void Auswertung(int zahl, List<TemperaturInfo> temperaturen, TemperaturwertUser TemperaturenMaschine, TemperaturAuswertung MaschinenAuswertung, DatenSpeicherung TemperaturenSpeichern)
+    public static void Auswertung(int zahl, List<TemperaturInfo> temperaturen, TemperaturwertUser TemperaturenMaschine, TemperaturAuswertung TemperaturAuswertung, DatenSpeicherung TemperaturenSpeichern, TemperaturSuchen temperaturSuchen)
     {
         UserAusgabe userAusgabe = new UserAusgabe();
 
-        switch (zahl)  // Hier eine switch Verzweigung, Enum
+        switch (zahl)  
         {
             case 1:
                 {
@@ -17,9 +17,9 @@ public class StartseiteAuswertung
 
             case 2:
                 {
-                    int min = MaschinenAuswertung.GetMin(temperaturen);
-                    int max = MaschinenAuswertung.GetMax(temperaturen);
-                    double durchschnitt = MaschinenAuswertung.GetDurchschnitt(temperaturen);
+                    int min = TemperaturAuswertung.GetMin(temperaturen);
+                    int max = TemperaturAuswertung.GetMax(temperaturen);
+                    double durchschnitt = TemperaturAuswertung.GetDurchschnitt(temperaturen);
 
                     userAusgabe.StatistikUserAusgabe(durchschnitt, min, max);
                     break;
@@ -27,7 +27,7 @@ public class StartseiteAuswertung
 
             case 3:
                 {
-                    List<TemperaturInfo> info = MaschinenAuswertung.GrenzwertePruefung(temperaturen);
+                    List<TemperaturInfo> info = TemperaturAuswertung.GrenzwertePruefung(temperaturen);
                     foreach (var temperatur in info)
                     {
                         userAusgabe.GrenzwertUserAusgabe(temperatur.Temperatur, temperatur.Kategorie);
@@ -39,6 +39,11 @@ public class StartseiteAuswertung
             case 4:
                 TemperaturenSpeichern.TemperaturenSpeichern(temperaturen);
                 break;
+
+            case 5:
+                temperaturSuchen.TemperaturSuchfunktion(temperaturen);
+                break;
+
             default:
                 Environment.Exit(0);
                 break;
