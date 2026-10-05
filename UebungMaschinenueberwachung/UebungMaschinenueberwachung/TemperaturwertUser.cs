@@ -1,22 +1,25 @@
-﻿public class TemperaturwertUser 
+﻿using UebungMaschinenueberwachung;
+
+public class TemperaturwertUser 
 {
 
     
 
-    public void Temperaturen(List<int>temperaturen, ref int anzahlWarnungen) //Kein Void
+    public int Temperaturen(List<TemperaturInfo>temperaturen) //Kein Void -> Mit Rückgabewert (return)
     {
 
-        UserAusgabe UserEingabeTemperaturWrite = new UserAusgabe();
-        
+        UserAusgabe UserAusgabe = new UserAusgabe();
+
+        int anzahlWarnungen = 0;
 
         while (true)
         {
-           
+            UserAusgabe.UserAusgabeTempErfassen();
             string eingabe = Console.ReadLine();
 
             if (eingabe == "s")
             {
-                UserEingabeTemperaturWrite.ZahlOderSUserInteraktion();
+                UserAusgabe.UserAusgabeTempErfassen();
                 break;
             }
 
@@ -24,11 +27,13 @@
 
             if (temperatur > 120 || temperatur < 0)
             {
-                UserEingabeTemperaturWrite.UngültigeEingabeUserInteraktion();
+                UserAusgabe.UngültigeEingabeUser();
             }
             else
             {
-                temperaturen.Add(temperatur);
+                TemperaturInfo temperaturInfo = new TemperaturInfo();
+                temperaturInfo.Temperatur = temperatur;
+                temperaturen.Add(temperaturInfo);
 
                 if (temperatur > 80)
                 {
@@ -37,11 +42,12 @@
 
                 if (temperatur > 90)
                 {
-                    UserEingabeTemperaturWrite.KritischUserInteraktion(temperatur);
+                    UserAusgabe.KritischUserInteraktion(temperatur);
                 }
             }
 
         }
+        return anzahlWarnungen;
     }
   
 }

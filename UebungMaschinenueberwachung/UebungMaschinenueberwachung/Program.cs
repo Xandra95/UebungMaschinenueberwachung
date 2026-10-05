@@ -8,18 +8,18 @@ namespace UebungMaschinenueberwachung
     {
         static void Main(string[] args)
         {
-            Startseite MaschinenüberwachungHauptmenü = new Startseite();
+            Startseite Startseite = new Startseite();
 
-            StartseiteAuswertung MaschinenHauptmenüAuswertung = new StartseiteAuswertung();
+            StartseiteAuswertung StartseiteAuswertung = new StartseiteAuswertung();
 
-            TemperaturwertUser MaschinenTemperatur = new TemperaturwertUser();
-            List<int> temperaturen = new List<int>();
+            TemperaturwertUser TemperaturwertUser = new TemperaturwertUser();
+            List<TemperaturInfo> temperaturen = new ();
 
-            TemperaturAuswertung MaschinenAuswertung = new TemperaturAuswertung();
+            TemperaturAuswertung TemperaturAuswertung = new TemperaturAuswertung();
 
-            DatenSpeicherung TemperaturSpeichern = new DatenSpeicherung();
+            DatenSpeicherung DatenSpeicherung = new DatenSpeicherung();
 
-            UserAusgabe MaschinenAuswertungUserAusgabe = new UserAusgabe();
+            
            
 
             if(System.IO.File.Exists("Temperaturen.txt")) //Das in die Klasse DatenSpeicherung
@@ -27,21 +27,23 @@ namespace UebungMaschinenueberwachung
                 var dateiTemperatur = System.IO.File.ReadAllLines("Temperaturen.txt");
                 foreach (var line in dateiTemperatur)
                 {
-                    temperaturen.Add(int.Parse(line));
+                    TemperaturInfo temperaturInfo = new TemperaturInfo();
+                    temperaturInfo.Temperatur = int.Parse(line);
+                    temperaturen.Add(temperaturInfo);
                 }
             }
 
-            int anzahlWarnungen = 0;
+         
 
             while (true)
             {
-                MaschinenüberwachungHauptmenü.MaschinenStartseiteMethode();
+                Startseite.MaschinenStartseiteMethode();
 
 
                 int zahl = int.Parse(Console.ReadLine());
 
 
-                MaschinenHauptmenüAuswertung.Auswertung(zahl, temperaturen, ref anzahlWarnungen, MaschinenTemperatur,  MaschinenAuswertung,TemperaturSpeichern);
+                StartseiteAuswertung.Auswertung(zahl, temperaturen,  TemperaturwertUser,  TemperaturAuswertung,DatenSpeicherung);
 
             }
 

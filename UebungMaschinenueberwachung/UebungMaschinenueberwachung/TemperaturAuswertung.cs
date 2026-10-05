@@ -1,4 +1,6 @@
-﻿public class TemperaturAuswertung
+﻿using UebungMaschinenueberwachung;
+
+public class TemperaturAuswertung
 {
     public void StatistikBerechnung(List<int> temperaturen)
     {
@@ -10,27 +12,43 @@
         StatistikMaschineUser.StatistikUserAusgabe(durchschnitt, minimum, maximum);
     }
 
-
-    public void GrenzwertePruefung(List<int> temperaturen)
+    public int GetMin(List<TemperaturInfo> temperaturen)
     {
-        UserAusgabe GrenzwertMaschineUser = new UserAusgabe();
+        return temperaturen.Min(x => x.Temperatur);
+    }
 
-        foreach (var temperatur in temperaturen)
+    public int GetMax(List<TemperaturInfo>temperaturen)
+    {
+        return temperaturen.Max(x => x.Temperatur);
+    }
+
+    public double GetDurchschnitt(List<TemperaturInfo>temperaturen)
+    {
+        return temperaturen.Average(x => x.Temperatur);
+    }
+
+    public List<TemperaturInfo> GrenzwertePruefung(List<TemperaturInfo> temperaturen)
+    {
+
+
+        for (int i = 0; i < temperaturen.Count; i++)
         {
-            if (temperatur < 50)
+            
+            if (temperaturen[i].Temperatur < 50)
             {
-                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "Kühl");
+                temperaturen[i].Kategorie = "Kühl";
             }
-            else if (temperatur < 80)
+            else if (temperaturen[i].Temperatur < 80)
             {
-                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "Normal");
+                temperaturen[i].Kategorie = "Normal";
             }
             else
             {
-                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "WARNUNG!");
+                temperaturen[i].Kategorie = "WARNUNG!";
+
             }
 
-
         }
+        return temperaturen;
     }
 }
