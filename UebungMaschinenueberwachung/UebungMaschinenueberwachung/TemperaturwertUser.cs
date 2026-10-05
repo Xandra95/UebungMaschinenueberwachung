@@ -1,24 +1,22 @@
-﻿public class TemperaturwertUser //Console.WriteLine weg oder alle User Kommunikationen in eine Klasse
+﻿public class TemperaturwertUser 
 {
 
-    public void WriteLineFarbig(string text, ConsoleColor textFarbe, ConsoleColor hintergrundFarbe)
-    {
-        Console.ForegroundColor = textFarbe;
-        Console.BackgroundColor = hintergrundFarbe;
-
-        Console.WriteLine(text);
-        Console.ResetColor();
-    }
+    
 
     public void Temperaturen(List<int>temperaturen, ref int anzahlWarnungen) //Kein Void
     {
+
+        UserAusgabe UserEingabeTemperaturWrite = new UserAusgabe();
+        
+
         while (true)
         {
-            Console.Write("Bitte Temperaturwert eingeben oder Drücken Sie s um zurück zur Startseite zu gelangen. ");
+           
             string eingabe = Console.ReadLine();
 
             if (eingabe == "s")
             {
+                UserEingabeTemperaturWrite.ZahlOderSUserInteraktion();
                 break;
             }
 
@@ -26,7 +24,7 @@
 
             if (temperatur > 120 || temperatur < 0)
             {
-                WriteLineFarbig("Fehler: Ungültige Eingabe.",ConsoleColor.Yellow,ConsoleColor.DarkGray);
+                UserEingabeTemperaturWrite.UngültigeEingabeUserInteraktion();
             }
             else
             {
@@ -39,7 +37,7 @@
 
                 if (temperatur > 90)
                 {
-                    WriteLineFarbig(temperatur + " Grad Celsius ---- KRITISCH Maschine SOFORT prüfen! ----",ConsoleColor.White, ConsoleColor.DarkRed);
+                    UserEingabeTemperaturWrite.KritischUserInteraktion(temperatur);
                 }
             }
 

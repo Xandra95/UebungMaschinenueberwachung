@@ -7,7 +7,7 @@
         int maximum = temperaturen.Max();
 
         UserAusgabe StatistikMaschineUser = new UserAusgabe();
-        StatistikMaschineUser.StatistikAusgabe(durchschnitt, minimum, maximum);
+        StatistikMaschineUser.StatistikUserAusgabe(durchschnitt, minimum, maximum);
     }
 
 
@@ -19,15 +19,15 @@
         {
             if (temperatur < 50)
             {
-                GrenzwertMaschineUser.GrenzwertAusgabe(temperatur, "Kühl");
+                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "Kühl");
             }
             else if (temperatur < 80)
             {
-                GrenzwertMaschineUser.GrenzwertAusgabe(temperatur, "Normal");
+                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "Normal");
             }
             else
             {
-                GrenzwertMaschineUser.GrenzwertAusgabe(temperatur, "WARNUNG!");
+                GrenzwertMaschineUser.GrenzwertUserAusgabe(temperatur, "WARNUNG!");
             }
 
 
